@@ -6,11 +6,11 @@
 // applicable laws. 
 #endregion
 using RowDragAndDropBetweenControlsDemo.Model;
-using Syncfusion.Windows.Controls.Grid;
 using Syncfusion.Windows.Shared;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,18 +75,36 @@ namespace RowDragAndDropBetweenControlsDemo
         private ObservableCollection<Orders> GetOrdersDetails()
         {
             var ordersDetails = new ObservableCollection<Orders>();
-
-            if (!LayoutControl.IsInDesignMode)
-            {
-                string connectionString = string.Format(@"Data Source = {0}", LayoutControl.FindFile("Northwind.sdf"));
+          
+                string connectionString = string.Format(@"Data Source = {0}", FindFile("Northwind.sdf"));
                 northWind = new Northwind(connectionString);
                 var emp = northWind.Orders.Take(15).ToList();
                 foreach (var o in emp)
                 {
                     ordersDetails.Add(o);
                 }
-            }
             return ordersDetails;
         }
+
+        private static string FindFile(string fileName)
+        {
+            string dataFileName = fileName;
+            for (int n = 0; n < 12; n++)
+            {
+                if (System.IO.File.Exists(fileName))
+                {
+                    return new FileInfo(fileName).FullName;
+                }
+                if (System.IO.File.Exists(dataFileName))
+                {
+                    return new FileInfo(dataFileName).FullName;
+                }
+                fileName = @"..\" + fileName;
+                dataFileName = @"..\" + dataFileName;
+            }
+
+            return fileName;
+        }
+
     }
 }
