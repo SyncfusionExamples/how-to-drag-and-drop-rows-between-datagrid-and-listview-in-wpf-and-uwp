@@ -4,7 +4,7 @@ This example illustrates how to drag and drop rows between [WPF DataGrid](https:
 
 ## WPF
 
-To perform dragging between the ListView and DataGrid, by using the [GridRowDragDropController.DragStart](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.GridRowDragDropController.html) and [GridRowDragDropController.Drop](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.GridRowDragDropController.html) events. And you must set the **AllowDrop** property as `true` in the ListView while doing the drag and drop operation from DataGrid with ListView control.
+To perform dragging between the ListView and DataGrid, by using the [GridRowDragDropController.DragStart](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.GridRowDragDropController.html#Syncfusion_UI_Xaml_Grid_GridRowDragDropController_DragStart) and [GridRowDragDropController.Drop](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.GridRowDragDropController.html#Syncfusion_UI_Xaml_Grid_GridRowDragDropController_Drop) events. And you must set the **AllowDrop** property as `true` in the ListView while doing the drag and drop operation from DataGrid with ListView control.
 
 ``` c#
 this.dataGrid.RowDragDropController.DragStart += sfGrid_DragStart;
